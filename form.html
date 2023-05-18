@@ -92,6 +92,16 @@ table td:first-child {
   color: #555;
 }
 
+.success-message {
+      text-align: center;
+      color: #e92113;
+      font-weight: bold;
+      margin-bottom: 20px;
+      background-color: #e8f5e9;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
 
 </style>
 </head>
@@ -151,6 +161,7 @@ table td:first-child {
         <input type="submit" value="Submit">
       </div>
     </form>
+    <div id="successMessage" class="success-message"></div>
   </div>
 
   <script>
@@ -209,10 +220,19 @@ table td:first-child {
       // Open a new window to display the data
       var newWindow = window.open("", "_blank");
       newWindow.document.write("<html><head><title>Application Data</title></head><body>");
-      newWindow.document.write("<h2>Application Data</h2>");
+      newWindow.document.write("<h2>Thank You For Applying</h2>");
       newWindow.document.write(table.outerHTML);
       newWindow.document.write("</body></html>");
       newWindow.document.close();
+
+      // Display success message
+      var successMessage = document.getElementById("successMessage");
+      successMessage.textContent = "Thank you for your application!";
+
+      // Reset the form
+      document.getElementById("jobApplicationForm").reset();
+
+      return false;
     });
   </script>
 </body>
